@@ -1,0 +1,19 @@
+3.5 Strings
+-immutable sequence of bytes
+-UTF-8 encoded sequences of runes
+-len returns the number of bytes in a string (not runes), index
+retrieves the ith byte of string s
+s := "hello, world"
+fmt.Println(len(s)) // 12
+fmt.Println(s[0], s[7]) //h, w
+c := s[len(s)] //panic out of range
+-ith byte not necessarily ith character
+-substring s[i:j] yields a new string consisting of the bytes of original
+string starting at index i and continuing up to but not including the byte
+at index j (j - i bytes)
+-fmt.Println(s[0:5]) //hello
+ fmt.Println(s[:5]) //hello
+ fmt.Println(s[7:]) //world
+ fmt.Println(s[:]) //hello, world
+-plus operator makes a new string by concatenating two strings
+.

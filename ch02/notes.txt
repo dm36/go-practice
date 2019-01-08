@@ -1,0 +1,57 @@
+-pre-declared names are not reserved (constants: true, false, iota, null, types, functions)
+-declared within a function- local to that function, outside- visible to all files of the package
+to which it belongs
+-name begins with an upper case- exported, visible and accessible outside of its own package and
+may be referred to by other parts of the program such as Printf from fmt
+-package names themselves are always lower case (math, fmt)
+-camel case used stylistically
+-var, const, type and func declarations
+-file begins with a package declaration- what package the file is part of (package main)
+-followed by import declarations, then sequence of package level declarations
+
+2.3
+-var name type = expression (variable of a particular type, attaches a name and
+sets initial value)
+-type or = expression may be omitted but not both- type is determined by
+initializer expression
+-if expression is omitted- initial value is zero for the type- zero value for an
+array or struct has a zero for all its elements/fields
+-no such thing as uninitialized variable
+-var s string
+ fmt.Println(s) prints an empty string
+-can declare and optionally initialize a set of variables in a single declaration,
+matching list of expressions, omitting type- allows declaration of multiple variables
+of different types
+-var i, j, k int //int, int, int
+ var b, f, s = true, 2.3, "four" //bool, float64, string
+-package variables are initialized before main begins, variables can also
+be initialized by calling a function that returns multiple values
+
+2.3.1
+-short variable declaration- declare and initialize local variables,
+name := expression, type of name is determined by the type of expression
+
+anim := gif.GIF{LoopCount: nframes}
+freq := rand.Float64() * 3.0
+t := 0.0
+-short variable declarations used to declare and initialize majority of local
+vars
+-var used for local vars that need a type that differs from that of the initializer
+expression, or when the variable will be assigned a value later and intitial value
+unimportant
+-i := 100, short variable declaration, the 100 is the initializer btw
+-var boiling float64 = 100 (type that differs from that of the intializer
+expression- float 64 and 100)
+-multiple variables can be declared and initialized in same short var declaration
+i, j := 0, 1
+-declarations with multiple initializer expressions only for readability
+- := declaration, = assignment
+-multi-variable declaration not to be confused with tuple assignment in which
+each variable on the left-hand side is assigned the corresponding value from
+the right-hand side
+-short variable declarations used for calls to functions
+-does not necessarily declare all variables on left-hand side, some of them declared
+acts as assignment
+in, err := os.Open(infile)
+out, err := os.Create(outfile)
+-declares out but assigns a value to the existing err variable
